@@ -1,0 +1,658 @@
+autostart = False
+version = 0.8.6
+[127.0.0.1:7202]
+    workingdir = working
+    udp = 10201
+    [[ETHSW ISP1]]
+        1 = access 1 NATA1 f2/0
+        2 = access 1 NATL1 f0/0
+        3 = access 1 PC_Teste f0/0
+        x = -178.5
+        y = -250.0
+        z = 1.0
+        hx = 26.0
+        hy = -21.0
+[127.0.0.1:7203]
+    workingdir = working
+    udp = 10301
+    [[3725]]
+        image = C:\Users\silva\GNS3\Images\c3725-advipservicesk9-mz.124-21.image
+        ram = 128
+        idlepc = 0x60a6a1e0
+        sparsemem = True
+        ghostios = True
+    [[ROUTER NATL1]]
+        model = 3725
+        console = 2111
+        aux = 2511
+        cnfg = configs\NATL1.cfg
+        f0/0 = ISP1 2
+        f0/1 = NATL2 f0/1
+        x = 31.1076477382
+        y = -149.379725677
+        z = 1.0
+        hx = -45.0
+        hy = 9.0
+    [[ROUTER NATL2]]
+        model = 3725
+        console = 2112
+        aux = 2512
+        cnfg = configs\NATL2.cfg
+        f0/0 = ISP2 2
+        f0/1 = NATL1 f0/1
+        x = 189.369624409
+        y = -149.237590053
+        z = 1.0
+        hx = 63.0
+        hy = 9.0
+[127.0.0.1:7200]
+    workingdir = working
+    udp = 10001
+    [[3725]]
+        image = C:\Users\silva\GNS3\Images\c3725-advipservicesk9-mz.124-21.image
+        ram = 128
+        idlepc = 0x60a6a1e0
+        sparsemem = True
+        ghostios = True
+    [[ROUTER NATA2]]
+        model = 3725
+        console = 2102
+        aux = 2502
+        cnfg = configs\NATA2.cfg
+        f0/0 = CoreA2 f0/0
+        f0/1 = CoreA1 f0/1
+        slot1 = NM-1FE-TX
+        f1/0 = NATA1 f1/0
+        slot2 = NM-1FE-TX
+        f2/0 = ISP2 1
+        x = -181.847763109
+        y = -149.230447378
+        z = 1.0
+        hx = 63.5
+        hy = 10.0
+    [[ROUTER NATA1]]
+        model = 3725
+        console = 2101
+        aux = 2501
+        cnfg = configs\NATA1.cfg
+        f0/0 = CoreA1 f0/0
+        f0/1 = CoreA2 f0/1
+        slot1 = NM-1FE-TX
+        f1/0 = NATA2 f1/0
+        slot2 = NM-1FE-TX
+        f2/0 = ISP1 1
+        x = -321.847763109
+        y = -149.230447378
+        z = 1.0
+        hx = -45.5
+        hy = 8.0
+    [[ETHSW ISP2]]
+        1 = access 1 NATA2 f2/0
+        2 = access 1 NATL2 f0/0
+        x = -15.5
+        y = -249.0
+        z = 1.0
+        hx = 21.0
+        hy = -21.0
+    [[ROUTER CoreA1]]
+        model = 3725
+        console = 2103
+        aux = 2503
+        cnfg = configs\CoreA1.cfg
+        f0/0 = NATA1 f0/0
+        f0/1 = NATA2 f0/1
+        slot1 = NM-16ESW
+        f1/0 = CoreA2 f1/0
+        f1/1 = DA1 f1/0
+        f1/2 = DA2 f1/0
+        f1/3 = DA3 f1/1
+        f1/4 = DA4 f1/1
+        f1/5 = PC_TesteDHCP f0/0
+        f1/10 = DHCP f0/0
+        f1/11 = DNS e1
+        symbol = EtherSwitch router
+        x = -315.347763109
+        y = -39.7304473783
+        z = 1.0
+        hx = -31.5
+        hy = -23.0
+    [[ROUTER CoreA2]]
+        model = 3725
+        console = 2104
+        aux = 2504
+        cnfg = configs\CoreA2.cfg
+        f0/0 = NATA2 f0/0
+        f0/1 = NATA1 f0/1
+        slot1 = NM-16ESW
+        f1/0 = CoreA1 f1/0
+        f1/1 = DA1 f1/1
+        f1/2 = DA2 f1/1
+        f1/3 = DA3 f1/0
+        f1/4 = DA4 f1/0
+        symbol = EtherSwitch router
+        x = -175.347763109
+        y = -39.7304473783
+        z = 1.0
+        hx = 46.5
+        hy = 10.0
+[127.0.0.1:7201]
+    workingdir = working
+    udp = 10101
+    [[3725]]
+        image = C:\Users\silva\GNS3\Images\c3725-advipservicesk9-mz.124-21.image
+        ram = 128
+        idlepc = 0x60a6a1e0
+        sparsemem = True
+        ghostios = True
+    [[ROUTER DA2]]
+        model = 3725
+        console = 2106
+        aux = 2506
+        cnfg = configs\DA2.cfg
+        slot1 = NM-16ESW
+        f1/0 = CoreA1 f1/2
+        f1/1 = CoreA2 f1/2
+        f1/2 = DA1 f1/2
+        f1/5 = microcore3 e1
+        symbol = EtherSwitch router
+        x = -317.347763109
+        y = 101.269552622
+        z = 1.0
+        hx = 8.0
+        hy = 40.0
+    [[ROUTER DA4]]
+        model = 3725
+        console = 2108
+        aux = 2508
+        cnfg = configs\DA4.cfg
+        slot1 = NM-16ESW
+        f1/0 = CoreA2 f1/4
+        f1/1 = CoreA1 f1/4
+        f1/2 = DA3 f1/2
+        f1/10 = microcore6 e1
+        f1/15 = microcore5 e1
+        symbol = EtherSwitch router
+        x = -77.3477631085
+        y = 101.269552622
+        z = 1.0
+        hx = 7.0
+        hy = 40.0
+    [[ROUTER DA1]]
+        model = 3725
+        console = 2105
+        aux = 2505
+        cnfg = configs\DA1.cfg
+        slot1 = NM-16ESW
+        f1/0 = CoreA1 f1/1
+        f1/1 = CoreA2 f1/1
+        f1/2 = DA2 f1/2
+        f1/5 = microcore2 e1
+        f1/10 = microcore1 e1
+        symbol = EtherSwitch router
+        x = -417.347763109
+        y = 101.269552622
+        z = 1.0
+        hx = 6.0
+        hy = 40.0
+    [[ROUTER DA3]]
+        model = 3725
+        console = 2107
+        aux = 2507
+        cnfg = configs\DA3.cfg
+        slot1 = NM-16ESW
+        f1/0 = CoreA2 f1/3
+        f1/1 = CoreA1 f1/3
+        f1/2 = DA4 f1/2
+        f1/15 = microcore4 e1
+        symbol = EtherSwitch router
+        x = -177.347763109
+        y = 101.269552622
+        z = 1.0
+        hx = 7.0
+        hy = 40.0
+[127.0.0.1:7206]
+    workingdir = working
+    udp = 10601
+    [[3725]]
+        image = C:\Users\silva\GNS3\Images\c3725-advipservicesk9-mz.124-21.image
+        ram = 128
+        idlepc = 0x60a6a1e0
+        sparsemem = True
+        ghostios = True
+    [[ROUTER PC_TesteDHCP]]
+        model = 3725
+        console = 2141
+        aux = 2541
+        cnfg = configs\PC_TesteDHCP.cfg
+        f0/0 = CoreA1 f1/5
+        x = -523.0
+        y = -132.0
+        z = 1.0
+[127.0.0.1:7204]
+    workingdir = working
+    udp = 10401
+    [[3725]]
+        image = C:\Users\silva\GNS3\Images\c3725-advipservicesk9-mz.124-21.image
+        ram = 128
+        idlepc = 0x60a6a1e0
+        sparsemem = True
+        ghostios = True
+    [[ROUTER PC_Teste]]
+        model = 3725
+        console = 2113
+        aux = 2513
+        cnfg = configs\PC_Teste.cfg
+        f0/0 = ISP1 3
+        x = -320.0
+        y = -256.0
+        z = 1.0
+[127.0.0.1:7205]
+    workingdir = working
+    udp = 10501
+    [[3725]]
+        image = C:\Users\silva\GNS3\Images\c3725-advipservicesk9-mz.124-21.image
+        ram = 128
+        idlepc = 0x60a6a1e0
+        sparsemem = True
+        ghostios = True
+    [[ROUTER DHCP]]
+        model = 3725
+        console = 2126
+        aux = 2526
+        cnfg = configs\DHCP.cfg
+        f0/0 = CoreA1 f1/10
+        x = -523.0
+        y = -38.0
+        z = 1.0
+[vbox 127.0.0.1:11525]
+    workingdir = working
+    udp = 20900
+    [[VBoxDevice]]
+        image = ubuntu-12.04-server-i386
+        nics = 2
+    [[VBOX microcore1]]
+        image = microcore4.7.7_1
+        e1 = DA1 f1/10
+        x = -522.347763109
+        y = 227.269552622
+        z = 1.0
+    [[VBOX microcore3]]
+        image = microcore4.7.7_3
+        e1 = DA2 f1/5
+        x = -322.347763109
+        y = 227.269552622
+        z = 1.0
+    [[VBOX microcore2]]
+        image = microcore4.7.7_2
+        e1 = DA1 f1/5
+        x = -422.347763109
+        y = 227.269552622
+        z = 1.0
+    [[VBOX microcore5]]
+        image = microcore4.7.7_5
+        e1 = DA4 f1/15
+        x = -84.3477631085
+        y = 223.269552622
+        z = 1.0
+    [[VBOX microcore4]]
+        image = microcore4.7.7_4
+        e1 = DA3 f1/15
+        x = -184.347763109
+        y = 223.269552622
+        z = 1.0
+    [[VBOX microcore6]]
+        image = microcore4.7.7_6
+        e1 = DA4 f1/10
+        x = 11.6522368915
+        y = 223.269552622
+        z = 1.0
+    [[VBOX DNS]]
+        e1 = CoreA1 f1/11
+        x = -523.5
+        y = 45.5
+        z = 1.0
+[GNS3-DATA]
+    configs = configs
+    workdir = working
+    [[NOTE 1]]
+        text = "10.50.51.10"
+        x = -535.847763109
+        y = 283.769552622
+    [[NOTE 2]]
+        text = "10.20.0.100"
+        x = -532.0
+        y = 97.0
+    [[NOTE 3]]
+        text = "10.10.14.20"
+        x = -91.8477631085
+        y = 276.769552622
+    [[NOTE 4]]
+        text = "10.10.14.10"
+        x = -192.847763109
+        y = 277.769552622
+    [[NOTE 5]]
+        text = "10.50.51.20"
+        x = 0.152236891498
+        y = 277.769552622
+    [[NOTE 6]]
+        text = "10.20.0.200"
+        x = -532.0
+        y = -2.0
+    [[NOTE 7]]
+        text = "10.30.11.10"
+        x = -431.847763109
+        y = 281.769552622
+    [[NOTE 8]]
+        text = "10.30.11.20"
+        x = -329.847763109
+        y = 282.769552622
+    [[NOTE 9]]
+        text = "f1/0"
+        x = -35.5
+        y = 0.5
+        interface = CoreA2 f1/0
+    [[NOTE 10]]
+        text = "f1/3"
+        x = 22.9326811821
+        y = 63.4959766646
+        interface = CoreA2 f1/3
+    [[NOTE 11]]
+        text = "f1/1"
+        x = -44.0615111932
+        y = 24.6370788358
+        interface = CoreA2 f1/1
+    [[NOTE 12]]
+        text = "f1/4"
+        x = 50.3289270843
+        y = 44.3457012131
+        interface = CoreA2 f1/4
+    [[NOTE 13]]
+        text = "f1/2"
+        x = -11.8840384663
+        y = 49.6841508715
+        interface = CoreA2 f1/2
+    [[NOTE 14]]
+        text = "f0/1"
+        x = -20.7566786998
+        y = -27.4603693214
+        interface = CoreA2 f0/1
+    [[NOTE 15]]
+        text = "f0/0"
+        x = 27.8603457374
+        y = -27.4983768539
+        interface = CoreA2 f0/0
+    [[NOTE 16]]
+        text = "f1/11"
+        x = -58.9424943286
+        y = 24.5733655694
+        interface = CoreA1 f1/11
+    [[NOTE 17]]
+        text = "f1/0"
+        x = 49.5
+        y = 0.5
+        interface = CoreA1 f1/0
+    [[NOTE 18]]
+        text = "f1/10"
+        x = -57.4999734874
+        y = 4.54605438923
+        interface = CoreA1 f1/10
+    [[NOTE 19]]
+        text = "f1/3"
+        x = 27.4785219027
+        y = 51.0867506398
+        interface = CoreA1 f1/3
+    [[NOTE 20]]
+        text = "f1/1"
+        x = -34.9447914611
+        y = 47.9089764316
+        interface = CoreA1 f1/1
+    [[NOTE 21]]
+        text = "f1/4"
+        x = 61.9140098957
+        y = 29.888131913
+        interface = CoreA1 f1/4
+    [[NOTE 22]]
+        text = "f1/2"
+        x = -8.0673188179
+        y = 58.4959766646
+        interface = CoreA1 f1/2
+    [[NOTE 23]]
+        text = "f0/0"
+        x = 25.8603457374
+        y = -25.4983768539
+        interface = CoreA1 f0/0
+    [[NOTE 24]]
+        text = "f0/1"
+        x = 60.9295151325
+        y = -16.2423842532
+        interface = CoreA1 f0/1
+    [[NOTE 25]]
+        text = "f1/5"
+        x = -66.0651294429
+        y = -14.7170067775
+        interface = CoreA1 f1/5
+    [[NOTE 26]]
+        text = "f0/0"
+        x = 72.9999734874
+        y = 21.9539456108
+        interface = DHCP f0/0
+    [[NOTE 27]]
+        text = "f0/0"
+        x = -8.45057912363
+        y = -18.5271811077
+        interface = NATL2 f0/0
+    [[NOTE 28]]
+        text = "f0/1"
+        x = -31.9999838682
+        y = 21.9640758773
+        interface = NATL2 f0/1
+    [[NOTE 29]]
+        text = "f0/1"
+        x = 68.9999838682
+        y = 22.0359241227
+        interface = NATL1 f0/1
+    [[NOTE 30]]
+        text = "f0/0"
+        x = -2.5639824559
+        y = -15.308554063
+        interface = NATL1 f0/0
+    [[NOTE 31]]
+        text = "f1/15"
+        x = 25.5
+        y = 58.5
+        interface = DA3 f1/15
+    [[NOTE 32]]
+        text = "f1/1"
+        x = -35.4785219027
+        y = -8.08675063977
+        interface = DA3 f1/1
+    [[NOTE 33]]
+        text = "f1/0"
+        x = 26.0673188179
+        y = -19.4959766646
+        interface = DA3 f1/0
+    [[NOTE 34]]
+        text = "f1/2"
+        x = 45.5
+        y = 22.5
+        interface = DA3 f1/2
+    [[NOTE 35]]
+        text = "e1"
+        x = 69.9424943286
+        y = 15.4266344306
+        interface = DNS e1
+    [[NOTE 36]]
+        text = "f1/10"
+        x = -47.3439999306
+        y = 42.6164080698
+        interface = DA1 f1/10
+    [[NOTE 37]]
+        text = "f1/5"
+        x = 26.1059910519
+        y = 60.4954094221
+        interface = DA1 f1/5
+    [[NOTE 38]]
+        text = "f1/1"
+        x = 66.0615111933
+        y = -7.63707883578
+        interface = DA1 f1/1
+    [[NOTE 39]]
+        text = "f1/0"
+        x = 51.9447914611
+        y = -24.9089764316
+        interface = DA1 f1/0
+    [[NOTE 40]]
+        text = "f1/2"
+        x = 48.5
+        y = 23.5
+        interface = DA1 f1/2
+    [[NOTE 41]]
+        text = "f1/15"
+        x = -18.5
+        y = 56.5
+        interface = DA4 f1/15
+    [[NOTE 42]]
+        text = "f1/10"
+        x = 51.5
+        y = 42.5
+        interface = DA4 f1/10
+    [[NOTE 43]]
+        text = "f1/2"
+        x = -20.5
+        y = 23.5
+        interface = DA4 f1/2
+    [[NOTE 44]]
+        text = "f1/1"
+        x = -39.9140098957
+        y = -21.888131913
+        interface = DA4 f1/1
+    [[NOTE 45]]
+        text = "f1/0"
+        x = 5.67107291567
+        y = -23.3457012131
+        interface = DA4 f1/0
+    [[NOTE 46]]
+        text = "f0/0"
+        x = 73.0
+        y = 22.0
+        interface = PC_Teste f0/0
+    [[NOTE 47]]
+        text = "2"
+        x = 70.9505791236
+        y = 34.5271811077
+        interface = ISP2 2
+    [[NOTE 48]]
+        text = "1"
+        x = 1.60171375687
+        y = 37.2345517913
+        interface = ISP2 1
+    [[NOTE 49]]
+        text = "2"
+        x = 71.0639824559
+        y = 34.308554063
+        interface = ISP1 2
+    [[NOTE 50]]
+        text = "3"
+        x = -4.5
+        y = 16.0
+        interface = ISP1 3
+    [[NOTE 51]]
+        text = "1"
+        x = 3.22423778418
+        y = 39.6278474133
+        interface = ISP1 1
+    [[NOTE 52]]
+        text = "f1/5"
+        x = 27.1059910519
+        y = 56.4954094221
+        interface = DA2 f1/5
+    [[NOTE 53]]
+        text = "f1/2"
+        x = -19.5
+        y = 22.5
+        interface = DA2 f1/2
+    [[NOTE 54]]
+        text = "f1/1"
+        x = 59.8840384663
+        y = -10.6841508715
+        interface = DA2 f1/1
+    [[NOTE 55]]
+        text = "f1/0"
+        x = 26.0673188179
+        y = -30.4959766646
+        interface = DA2 f1/0
+    [[NOTE 56]]
+        text = "f2/0"
+        x = 26.2757622158
+        y = -18.6278474133
+        interface = NATA1 f2/0
+    [[NOTE 57]]
+        text = "f0/1"
+        x = 65.2566786998
+        y = 33.9603693213
+        interface = NATA1 f0/1
+    [[NOTE 58]]
+        text = "f0/0"
+        x = -6.3603457374
+        y = 41.9983768539
+        interface = NATA1 f0/0
+    [[NOTE 59]]
+        text = "f1/0"
+        x = 61.0
+        y = 2.0
+        interface = NATA1 f1/0
+    [[NOTE 60]]
+        text = "f2/0"
+        x = 65.8982862431
+        y = -8.23455179133
+        interface = NATA2 f2/0
+    [[NOTE 61]]
+        text = "f1/0"
+        x = -34.0
+        y = 0.0
+        interface = NATA2 f1/0
+    [[NOTE 62]]
+        text = "f0/1"
+        x = -35.4295151325
+        y = 28.7423842532
+        interface = NATA2 f0/1
+    [[NOTE 63]]
+        text = "f0/0"
+        x = 34.6396542626
+        y = 45.9983768539
+        interface = NATA2 f0/0
+    [[NOTE 64]]
+        text = "f0/0"
+        x = 73.5651294429
+        y = 21.2170067775
+        interface = PC_TesteDHCP f0/0
+    [[NOTE 65]]
+        text = "e1"
+        x = 8.5
+        y = -2.5
+        interface = microcore6 e1
+    [[NOTE 66]]
+        text = "e1"
+        x = 32.5
+        y = -10.5
+        interface = microcore4 e1
+    [[NOTE 67]]
+        text = "e1"
+        x = 32.5
+        y = -10.5
+        interface = microcore5 e1
+    [[NOTE 68]]
+        text = "e1"
+        x = 31.8940089481
+        y = -10.4954094221
+        interface = microcore2 e1
+    [[NOTE 69]]
+        text = "e1"
+        x = 31.8940089481
+        y = -10.4954094221
+        interface = microcore3 e1
+    [[NOTE 70]]
+        text = "e1"
+        x = 56.3439999306
+        y = -2.61640806983
+        interface = microcore1 e1
