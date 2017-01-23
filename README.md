@@ -13,7 +13,7 @@ Executar o desenho técnico, configurar e testar uma rede de telecomunicações 
 * Planeamento temporal para a execução do projeto [diagrama de Gantt].
 * Extras (ex: orçamento, equipamentos não rede, etc...).
 
-### Tarefas (2a fase)
+###2. Tarefas (2a fase)
 * Configuração da camada de acesso e definição da interligação/endereçamento dos equipamentos..
 * Configuração das redes locais virtuais (VLAN) e trunks.
 * Configuração do encaminhamento unicast IPv4.
@@ -25,7 +25,7 @@ Executar o desenho técnico, configurar e testar uma rede de telecomunicações 
 * Implementação de políticas de QoS.
 * Script de monitorização (linguagens: bash, python, perl, javascript, java, etc...) para deteção da localização (porta/switch) de um terminal com base no seu endereço MAC.
 
-### Tarefas Extra (2a fase)
+###2. Tarefas Extra (2a fase)
 * Assumindo que nas instalações da empresa existem 2 canais de IPTV para difusão interna, configure o serviço de difusão IP multicast incluindo o encaminhamento multicast IPv4 e IPv6. Configure os mecanismos de encaminhamento multicast de modo a permitir a difusão dos 2 canais a todas as televisões terminais com capacidade de reprodução.
 * Configuração de um servidor DHCPv4.
 * Configuração de um servidor VPN.
